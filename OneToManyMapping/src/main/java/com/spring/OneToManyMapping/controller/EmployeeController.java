@@ -18,10 +18,10 @@ public class EmployeeController {
     @Autowired
     private EmployeeService empService;
 
-//    @RequestMapping("/")
-//    public String msg(){
-//        return "Hello Java ";
-//    }
+    @RequestMapping("/msg")
+    public String msg(){
+        return "Hello Java ";
+    }
 
     @PostMapping("/registerEmp")
     public String registerEmp(@RequestBody Employee emp){

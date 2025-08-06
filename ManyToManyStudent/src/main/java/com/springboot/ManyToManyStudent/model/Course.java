@@ -13,8 +13,8 @@ public class Course {
     private String course_name;
     private long course_fee;
 
-//    @ManyToMany(mappedBy = "courses",fetch = FetchType.LAZY)
-//    private Set<Student> students;
+    @ManyToMany(mappedBy = "courses",fetch = FetchType.LAZY)
+    private Set<Student> students;
 
     public long getId() {
         return id;
@@ -24,13 +24,6 @@ public class Course {
         this.id = id;
     }
 
-//    public Set<Student> getStudents() {
-//        return students;
-//    }
-//
-//    public void setStudents(Set<Student> students) {
-//        this.students = students;
-//    }
 
     public long getCourse_fee() {
         return course_fee;

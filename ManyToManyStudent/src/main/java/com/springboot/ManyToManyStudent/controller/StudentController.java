@@ -46,10 +46,12 @@ public class StudentController {
         return studentService.deleteStudentById(id);
     }
 
-    @GetMapping("/getAllCourse")
+    @GetMapping("/getAllCourses")
     public List<Course> getCourses(){
+
         return courseService.getAllCourses();
     }
+
 
 
 

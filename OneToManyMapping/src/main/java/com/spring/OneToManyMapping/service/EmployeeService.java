@@ -1,12 +1,15 @@
 package com.spring.OneToManyMapping.service;
 
+import com.spring.OneToManyMapping.model.Address;
 import com.spring.OneToManyMapping.model.Employee;
+import com.spring.OneToManyMapping.repository.AddressRepo;
 import com.spring.OneToManyMapping.repository.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -14,10 +17,15 @@ public class EmployeeService {
 
     @Autowired
     private EmployeeRepo employeeRepo;
-    public String saveEmployee(Employee emp) {
+    @Autowired
+    private AddressRepo addressRepo;
+
+    public String saveEmployee( Employee emp) {
+
         employeeRepo.save(emp);
         return "Register Successfully";
     }
+
 
     public String deleteEmployeeById(long id) {
         Optional<Employee> upemp = employeeRepo.findById(id);
@@ -48,6 +56,6 @@ public class EmployeeService {
 
     public Employee getEmployeeById(long id) {
 
-        return employeeRepo.findById(id).orElse(null);
+        return employeeRepo.findById(id).orElseThrow(()->new RuntimeException("Student doesn't exist. " ));
     }
 }

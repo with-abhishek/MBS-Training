@@ -1,6 +1,7 @@
 package com.spring.OneToManyMapping.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
 
 import java.util.*;
 
@@ -14,7 +15,12 @@ public class Employee {
     private String name;
     private int age;
     private String gender;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "employee_address",
+            joinColumns = @JoinColumn(name = "employee_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "address_id",referencedColumnName = "id")
+    )
     private Set<Address> address;
 
     public long getId() {
@@ -33,6 +39,14 @@ public class Employee {
         this.name = name;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public String getGender() {
         return gender;
     }
@@ -47,14 +61,6 @@ public class Employee {
 
     public void setAddress(Set<Address> address) {
         this.address = address;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     @Override

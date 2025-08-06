@@ -14,7 +14,10 @@ public class Student {
     private String gender;
     private String email;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @JoinTable(name = "Students_Courses",
+            joinColumns = @JoinColumn(name = "Student_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "Course_id",referencedColumnName = "id"))
     private Set<Course> courses;
 
     public Long getId() {

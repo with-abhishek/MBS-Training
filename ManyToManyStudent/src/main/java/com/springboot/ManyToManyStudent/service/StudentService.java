@@ -1,17 +1,22 @@
 package com.springboot.ManyToManyStudent.service;
 
+import com.springboot.ManyToManyStudent.model.Course;
 import com.springboot.ManyToManyStudent.model.Student;
+import com.springboot.ManyToManyStudent.repository.CourseRepo;
 import com.springboot.ManyToManyStudent.repository.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
 
     @Autowired
     private StudentRepo studentRepo;
+ @Autowired
+    private CourseRepo courseRepo;
 
     public String saveStudent(List<Student> stu) {
         studentRepo.saveAll(stu);
@@ -37,4 +42,10 @@ public class StudentService {
         }
         return "No Student in databases";
     }
+
+
+
+
+
+
 }
