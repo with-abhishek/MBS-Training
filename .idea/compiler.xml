@@ -7,25 +7,34 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ManyToManyStudent" />
         <module name="OneToOneEmployee" />
         <module name="OneToManyMapping" />
-        <module name="ManyToManyStudent" />
+        <module name="OCR_Project" />
       </profile>
-      <profile name="Annotation profile for MBS_CRUD_Operation" enabled="true">
+      <profile name="Annotation profile for Employee_Address" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
+        <module name="Employee_Laptop" />
+        <module name="Employee_Laptop_v1" />
+        <module name="Employee_Address" />
         <module name="MBS_CRUD_Operation" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Employee_Address" options="-parameters" />
+      <module name="Employee_Laptop" options="-parameters" />
+      <module name="Employee_Laptop_v1" options="-parameters" />
       <module name="MBS_CRUD_Operation" options="-parameters" />
       <module name="ManyToManyStudent" options="-parameters" />
+      <module name="OCR_Project" options="-parameters" />
       <module name="OneToManyMapping" options="-parameters" />
       <module name="OneToOneEmployee" options="-parameters" />
     </option>

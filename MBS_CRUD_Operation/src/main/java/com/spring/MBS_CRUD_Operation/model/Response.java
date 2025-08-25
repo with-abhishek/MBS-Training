@@ -11,8 +11,6 @@ public class Response {
         this.httpStatus=httpStatus;
         this.message=message;
         this.payload=payload;
-
-
     }
 
     public Response() {

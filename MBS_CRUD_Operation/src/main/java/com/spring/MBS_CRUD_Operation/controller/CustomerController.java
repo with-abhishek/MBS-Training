@@ -15,10 +15,6 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @RequestMapping("/")
-    public String msg(){
-        return "Welcome , Here I'm using for creating this web application using the spring boot>>>>>>> ";
-    }
     @PostMapping("/register")
     public Response registerCustomer(@RequestBody Customer cust){
         return customerService.registerCustomer(cust);
@@ -39,8 +35,5 @@ public class CustomerController {
     public Response updateCustomer(@RequestBody Customer cust, @PathVariable Long id ){
         return customerService.updateCustomer(cust,id);
     }
-
-
-
 
 }

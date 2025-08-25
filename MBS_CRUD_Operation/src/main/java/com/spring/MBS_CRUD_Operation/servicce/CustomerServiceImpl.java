@@ -29,8 +29,8 @@ public class CustomerServiceImpl implements  CustomerService{
     @Override
     public Response getAllCustomer() {
         List<Customer> cust1=customerRepo.findAll();
-        if(cust1 ==null){
-            return  new Response(HttpStatus.SERVICE_UNAVAILABLE.value(),Constant.CUSTOMERS_FETCHING_FAILED,cust1);
+        if(cust1.isEmpty()){
+            return  new Response(HttpStatus.SERVICE_UNAVAILABLE.value(),Constant.CUSTOMERS_FETCHING_FAILED,null);
         }
         return new Response(HttpStatus.OK.value(), Constant.CUSTOMERS_FETCHING_SUCCESS,cust1);
     }
@@ -56,9 +56,12 @@ public class CustomerServiceImpl implements  CustomerService{
     @Override
     public Response deleteCustomer(Long id) {
         Optional<Customer> cust1 = customerRepo.findById(id);
-        if(!cust1.isPresent()){
-            return  new Response(HttpStatus.BAD_REQUEST.value(), Constant.CUSTOMER_DELETION_FAILED,cust1);
-        }
-        return new Response(HttpStatus.OK.value(), Constant.CUSTOMER_DELETION_SUCCESS,null);
+        return cust1.map(customer -> {
+            customerRepo.deleteById(customer.getId());
+            return new Response(HttpStatus.OK.value(),Constant.CUSTOMER_DELETION_SUCCESS,null);}).orElseGet(()->new Response(HttpStatus.BAD_REQUEST.value(), Constant.CUSTOMER_DELETION_FAILED,cust1));
+//        if(!cust1.isPresent()){
+//            return  new Response(HttpStatus.BAD_REQUEST.value(), Constant.CUSTOMER_DELETION_FAILED,cust1);
+//        }
+//        return new Response(HttpStatus.OK.value(), Constant.CUSTOMER_DELETION_SUCCESS,null);
     }
 }

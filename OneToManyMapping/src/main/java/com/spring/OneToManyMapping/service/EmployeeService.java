@@ -21,7 +21,6 @@ public class EmployeeService {
     private AddressRepo addressRepo;
 
     public String saveEmployee( Employee emp) {
-
         employeeRepo.save(emp);
         return "Register Successfully";
     }

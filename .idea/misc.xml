@@ -8,6 +8,10 @@
         <option value="$PROJECT_DIR$/OneToManyMapping/pom.xml" />
         <option value="$PROJECT_DIR$/ManyToManyStudent/pom.xml" />
         <option value="$PROJECT_DIR$/MBS_CRUD_Operation/pom.xml" />
+        <option value="$PROJECT_DIR$/Employee_Laptop/pom.xml" />
+        <option value="$PROJECT_DIR$/employee_laptop_v1/pom.xml" />
+        <option value="$PROJECT_DIR$/Employee_Address/pom.xml" />
+        <option value="$PROJECT_DIR$/OCR_Project/pom.xml" />
       </list>
     </option>
   </component>
